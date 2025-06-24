@@ -1,0 +1,52 @@
+.navbarDiv {
+    width: 100%;
+    padding: 15px 60px 15px 30px;
+    background-color: rgb(17, 17, 17);
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.navbarLink {
+    padding-right: 30px;
+}
+
+.navbarDiv a,
+.navbarDiv div {
+    cursor: pointer;
+}
+
+.navbarDiv a:hover,
+.navbarDiv div:hover {
+    color: rgb(255, 91, 91);
+}
+
+.navbarCart {
+    margin-left: auto;
+    position: relative;
+}
+
+.cartIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.cartCounter {
+    font-size: 0.8rem;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid white;
+    display: flex;
+    border-radius: 50%;
+    top: 5px;
+    left: 28px;
+    justify-content: center;
+    align-items: center;
+}
+
+.red {
+    color: rgb(255, 91, 91);
+}
