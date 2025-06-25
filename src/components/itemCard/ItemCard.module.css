@@ -1,0 +1,42 @@
+.itemCard {
+    height: 320px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.itemCard:hover {
+    border-color: rgb(255, 91, 91);
+}
+
+.itemImageDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.itemImageDiv img {
+    height: 130px;
+    width: 130px;
+}
+
+p {
+    text-align: center;
+}
+
+.itemPriceLg {
+    font-size: 1.4rem;
+}
+
+.itemPriceSm {
+    font-size: 0.8rem;
+}
+
+.itemDescription {
+    font-size: 1rem;
+}
