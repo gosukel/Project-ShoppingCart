@@ -1,15 +1,20 @@
-import styles from "./Navbar.module.css";
 import { ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
-export default function Navbar() {
+export default function Navbar({ cartCounter }) {
     return (
         <div className={styles.navbarDiv}>
-            <a className={styles.navbarLink}>Home</a>
-            <a className={styles.navbarLink}>Shop</a>
-            <div className={styles.navbarCart}>
+            <Link className={styles.navbarLink} to="/">
+                Home
+            </Link>
+            <Link className={styles.navbarLink} to="/shop">
+                Shop
+            </Link>
+            <Link className={styles.navbarCart} to="/shop/cart">
                 <ShoppingCart className={styles.cartIcon} />
-                <div className={styles.cartCounter}>0</div>
-            </div>
+                <div className={styles.cartCounter}>{cartCounter}</div>
+            </Link>
         </div>
     );
 }

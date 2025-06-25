@@ -32,6 +32,8 @@
     padding: 10px 60px;
     border-radius: 5px;
     border: 2px solid white;
+    text-decoration: none;
+    color: white;
 }
 
 .btn:hover {

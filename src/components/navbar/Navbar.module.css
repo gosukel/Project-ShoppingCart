@@ -10,6 +10,8 @@
 
 .navbarLink {
     padding-right: 30px;
+    text-decoration: none;
+    color: white;
 }
 
 .navbarDiv a,
@@ -25,6 +27,8 @@
 .navbarCart {
     margin-left: auto;
     position: relative;
+    text-decoration: none;
+    color: white;
 }
 
 .cartIcon {
@@ -45,6 +49,10 @@
     left: 28px;
     justify-content: center;
     align-items: center;
+}
+
+.navbarCart:hover .cartCounter {
+    border-color: rgb(255, 91, 91);
 }
 
 .red {
