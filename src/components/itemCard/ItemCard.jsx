@@ -1,7 +1,8 @@
 import styles from "./ItemCard.module.css";
+import InputSection from "../inputSection/InputSection";
 // id / .title / .price / description / category / .image / rating
 
-export default function ItemCard({ item }) {
+export default function ItemCard({ item, addToCart }) {
     let fixedPrice = item.price.toFixed(2);
     let priceString = fixedPrice.toString();
     let priceSplit = priceString.split(".");
@@ -18,7 +19,7 @@ export default function ItemCard({ item }) {
                 </p>
                 <p className={styles.itemDescription}>{item.title}</p>
             </div>
-            <div className={styles.addDiv}></div>
+            <InputSection item={item} addToCart={addToCart} />
         </div>
     );
 }

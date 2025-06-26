@@ -1,0 +1,45 @@
+.inputSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    min-height: 65px;
+}
+
+.inputContainer {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.qtyModifier {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+
+.qtyInput {
+    padding: 2px;
+}
+
+.addToCart {
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 3px 0;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 2px;
+}
+
+.inputSection button:hover {
+    background-color: rgb(255, 91, 91);
+}
+
+.addToCart:hover {
+    background-color: rgb(255, 91, 91);
+}

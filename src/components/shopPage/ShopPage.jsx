@@ -10,6 +10,7 @@ export default function ShopPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [cartItems, setCartItems] = useState([]);
+    const [cartQty, setCartQty] = useState(0);
 
     // get items
     function getItems() {
@@ -23,17 +24,46 @@ export default function ShopPage() {
         getItems();
     });
 
+    useEffect(() => {
+        console.log(cartItems);
+    }, [cartItems]);
+
     // state updaters
-    function addToCart(item) {
-        let newCart = [...cartItems, item];
-        setCartItems(newCart);
+    function addToCart(item, qty = 1) {
+        if (qty === 0) return;
+        if (cartItems.length === 0) {
+            let newCartItem = { ...item, qty: qty };
+            setCartItems([newCartItem]);
+            setCartQty((q) => q + qty);
+            return;
+        }
+        // check for item in cart
+        let inCart = false;
+        let newCartItems = cartItems.map((cartItem) => {
+            if (cartItem.id === item.id) {
+                inCart = true;
+                return { ...cartItem, qty: cartItem.qty + qty };
+            } else {
+                return cartItem;
+            }
+        });
+        setCartItems(newCartItems);
+        setCartQty((q) => q + qty);
+        return;
+        // for (let cartItem of cartItems) {
+        //     if (cartItem.id === item.id) {
+        //         let newCartItem = { ...cartItem, qty: cartItem.qty + qty };
+        //     }
+        // }
+        // let newCart = [...cartItems, item];
+        // setCartItems(newCart);
     }
 
     return (
         <div className={styles.shopBody}>
-            <Navbar cartCounter={cartItems.length} />
+            <Navbar cartCounter={cartQty} />
             {loading && <Loader />}
-            {!loading && <ItemGrid items={items} />}
+            {!loading && <ItemGrid items={items} addToCart={addToCart} />}
         </div>
     );
 }
