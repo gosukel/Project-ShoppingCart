@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { use, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import styles from "./ItemGrid.module.css";
 import ItemCard from "../itemCard/ItemCard";
 
-export default function ItemGrid({ items, addToCart }) {
+export default function ItemGrid() {
+    const { items, addToCart } = useOutletContext();
     const [showMore, setShowMore] = useState(false);
     let firstItems = items.slice(0, 8);
     if (!showMore) {

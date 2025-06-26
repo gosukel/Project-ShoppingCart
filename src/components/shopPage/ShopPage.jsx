@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import styles from "./ShopPage.module.css";
 import Navbar from "../navbar/Navbar";
 import Loader from "../loader/Loader";
 import ItemGrid from "../itemGrid/ItemGrid";
+import { Outlet } from "react-router-dom";
 
 export default function ShopPage() {
     const url = "https://fakestoreapi.com/products";
@@ -11,6 +12,13 @@ export default function ShopPage() {
     const [error, setError] = useState(null);
     const [cartItems, setCartItems] = useState([]);
     const [cartQty, setCartQty] = useState(0);
+
+    const shopData = {
+        items,
+        cartItems,
+        cartQty,
+        addToCart,
+    };
 
     // get items
     function getItems() {
@@ -24,9 +32,9 @@ export default function ShopPage() {
         getItems();
     });
 
-    useEffect(() => {
-        console.log(cartItems);
-    }, [cartItems]);
+    // useEffect(() => {
+    //     console.log(cartItems);
+    // }, [cartItems]);
 
     // state updaters
     function addToCart(item, qty = 1) {
@@ -50,20 +58,14 @@ export default function ShopPage() {
         setCartItems(newCartItems);
         setCartQty((q) => q + qty);
         return;
-        // for (let cartItem of cartItems) {
-        //     if (cartItem.id === item.id) {
-        //         let newCartItem = { ...cartItem, qty: cartItem.qty + qty };
-        //     }
-        // }
-        // let newCart = [...cartItems, item];
-        // setCartItems(newCart);
     }
 
     return (
         <div className={styles.shopBody}>
             <Navbar cartCounter={cartQty} />
             {loading && <Loader />}
-            {!loading && <ItemGrid items={items} addToCart={addToCart} />}
+            {/* {!loading && <Outlet items={items} addToCart={addToCart} />} */}
+            {!loading && <Outlet context={shopData} />}
         </div>
     );
 }

@@ -1,0 +1,10 @@
+.cartBody {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+.cartDetails {
+    width: 1000px;
+    border: 2px solid black;
+}
