@@ -18,6 +18,8 @@ export default function ShopPage() {
         cartItems,
         cartQty,
         addToCart,
+        lowerItemQty,
+        removeItem,
     };
 
     // get items
@@ -28,17 +30,15 @@ export default function ShopPage() {
             .catch((err) => setError(err))
             .finally(() => setLoading(false));
     }
+
     useEffect(() => {
         getItems();
-    });
-
-    // useEffect(() => {
-    //     console.log(cartItems);
-    // }, [cartItems]);
+    }, []);
 
     // state updaters
     function addToCart(item, qty = 1) {
         if (qty === 0) return;
+        // console.log(newCartItem);
         if (cartItems.length === 0) {
             let newCartItem = { ...item, qty: qty };
             setCartItems([newCartItem]);
@@ -55,9 +55,44 @@ export default function ShopPage() {
                 return cartItem;
             }
         });
+        if (!inCart) {
+            let newCartItem = { ...item, qty: qty };
+            console.log(newCartItem);
+            newCartItems.push(newCartItem);
+            console.log(newCartItems);
+        }
+        // console.log(newCartItems);
         setCartItems(newCartItems);
         setCartQty((q) => q + qty);
         return;
+    }
+
+    function lowerItemQty(item) {
+        setCartQty((q) => q - 1);
+        if (item.qty === 1) {
+            removeItem(item);
+            return;
+        }
+        let newCartItems = cartItems.map((cartItem) => {
+            if (cartItem.id === item.id) {
+                return { ...cartItem, qty: cartItem.qty - 1 };
+            } else {
+                return cartItem;
+            }
+        });
+        setCartItems(newCartItems);
+    }
+
+    function removeItem(item) {
+        setCartQty((q) => q - item.qty);
+        if (cartItems.length === 1) {
+            setCartItems([]);
+            return;
+        }
+        let newCartItems = cartItems.filter((i) => {
+            return i.id !== item.id;
+        });
+        setCartItems(newCartItems);
     }
 
     return (

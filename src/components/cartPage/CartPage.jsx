@@ -1,15 +1,27 @@
 import styles from "./CartPage.module.css";
-import Navbar from "../navbar/Navbar";
+import CartItem from "../cartItem/CartItem";
+import CartHeader from "../cartHeader/CartHeader";
+import CartFooter from "../cartFooter/CartFooter";
+import CartSummary from "../cartSummary/CartSummary";
 import { useOutletContext } from "react-router-dom";
+import { getSubTotal } from "../../utils/utilities";
 
 export default function CartPage() {
-    const { cartItems } = useOutletContext();
+    const { cartItems, cartQty } = useOutletContext();
+    // let item = cartItems[0];
+    let subtotal = getSubTotal(cartItems);
+    console.log(cartItems);
     return (
-        <div className={styles.cartBody}>
+        <div className={styles.cartPageBody}>
             <div className={styles.cartDetails}>
-                <div></div>
+                <CartHeader />
+                {cartItems.length > 0 &&
+                    cartItems.map((item) => {
+                        return <CartItem item={item} key={item.id} />;
+                    })}
+                <CartFooter cartQty={cartQty} subtotal={subtotal} />
             </div>
-            <div className={styles.cartSummary}></div>
+            <CartSummary cartQty={cartQty} subtotal={subtotal} />
         </div>
     );
 }

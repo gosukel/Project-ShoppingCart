@@ -1,0 +1,11 @@
+.cartFooter {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    padding-top: 10px;
+    font-size: 1.2rem;
+}
+
+.subtotalPrice {
+    font-weight: bold;
+}

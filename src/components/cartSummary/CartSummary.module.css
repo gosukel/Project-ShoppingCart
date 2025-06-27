@@ -1,0 +1,30 @@
+.cartSummary {
+    width: 21%;
+    background-color: #fff;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.cartSubtotalRight {
+    align-self: start;
+    font-size: 1.2rem;
+}
+
+.subtotalPrice {
+    font-weight: bold;
+}
+
+.checkoutBtn {
+    margin-top: 20px;
+    padding: 8px 0;
+    border: none;
+    border-radius: 100px;
+    background-color: rgb(255, 91, 91);
+    cursor: pointer;
+}
+
+.checkoutBtn:hover {
+    color: white;
+}

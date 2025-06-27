@@ -1,11 +1,10 @@
 import styles from "./ItemCard.module.css";
 import InputSection from "../inputSection/InputSection";
+import { splitPrice } from "../../utils/utilities";
 // id / .title / .price / description / category / .image / rating
 
 export default function ItemCard({ item, addToCart }) {
-    let fixedPrice = item.price.toFixed(2);
-    let priceString = fixedPrice.toString();
-    let priceSplit = priceString.split(".");
+    let priceSplit = splitPrice(item.price);
     // console.log(item);
     return (
         <div className={styles.itemCard}>
