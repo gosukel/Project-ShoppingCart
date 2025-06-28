@@ -8,9 +8,8 @@ import { getSubTotal } from "../../utils/utilities";
 
 export default function CartPage() {
     const { cartItems, cartQty } = useOutletContext();
-    // let item = cartItems[0];
     let subtotal = getSubTotal(cartItems);
-    console.log(cartItems);
+
     return (
         <div className={styles.cartPageBody}>
             <div className={styles.cartDetails}>

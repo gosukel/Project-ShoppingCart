@@ -1,8 +1,12 @@
 import styles from "./CartSummary.module.css";
+import { useOutletContext } from "react-router-dom";
 
 export default function CartSummary({ cartQty, subtotal }) {
+    const { cartItems, cartQtyCtx } = useOutletContext();
     function checkoutClick() {
-        alert("you have successfully checked out!");
+        alert(
+            `you have successfully checked out! \n ${cartQtyCtx} items bought`
+        );
     }
     return (
         <div className={styles.cartSummary}>

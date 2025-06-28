@@ -1,106 +1,18 @@
-import { useState, useEffect, createContext } from "react";
+// import { useState, useEffect, createContext } from "react";
 import styles from "./ShopPage.module.css";
 import Navbar from "../navbar/Navbar";
-import Loader from "../loader/Loader";
-import ItemGrid from "../itemGrid/ItemGrid";
+// import Loader from "../loader/Loader";
+// import ItemGrid from "../itemGrid/ItemGrid";
 import { Outlet } from "react-router-dom";
-
+import { useOutletContext } from "react-router-dom";
+// items, getItems, error, setError, loading, setLoading
 export default function ShopPage() {
-    const url = "https://fakestoreapi.com/products";
-    const [items, setItems] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [cartItems, setCartItems] = useState([]);
-    const [cartQty, setCartQty] = useState(0);
-
-    const shopData = {
-        items,
-        cartItems,
-        cartQty,
-        addToCart,
-        lowerItemQty,
-        removeItem,
-    };
-
-    // get items
-    function getItems() {
-        fetch(url)
-            .then((response) => response.json())
-            .then((result) => setItems(result))
-            .catch((err) => setError(err))
-            .finally(() => setLoading(false));
-    }
-
-    useEffect(() => {
-        getItems();
-    }, []);
-
-    // state updaters
-    function addToCart(item, qty = 1) {
-        if (qty === 0) return;
-        // console.log(newCartItem);
-        if (cartItems.length === 0) {
-            let newCartItem = { ...item, qty: qty };
-            setCartItems([newCartItem]);
-            setCartQty((q) => q + qty);
-            return;
-        }
-        // check for item in cart
-        let inCart = false;
-        let newCartItems = cartItems.map((cartItem) => {
-            if (cartItem.id === item.id) {
-                inCart = true;
-                return { ...cartItem, qty: cartItem.qty + qty };
-            } else {
-                return cartItem;
-            }
-        });
-        if (!inCart) {
-            let newCartItem = { ...item, qty: qty };
-            console.log(newCartItem);
-            newCartItems.push(newCartItem);
-            console.log(newCartItems);
-        }
-        // console.log(newCartItems);
-        setCartItems(newCartItems);
-        setCartQty((q) => q + qty);
-        return;
-    }
-
-    function lowerItemQty(item) {
-        setCartQty((q) => q - 1);
-        if (item.qty === 1) {
-            removeItem(item);
-            return;
-        }
-        let newCartItems = cartItems.map((cartItem) => {
-            if (cartItem.id === item.id) {
-                return { ...cartItem, qty: cartItem.qty - 1 };
-            } else {
-                return cartItem;
-            }
-        });
-        setCartItems(newCartItems);
-    }
-
-    function removeItem(item) {
-        setCartQty((q) => q - item.qty);
-        if (cartItems.length === 1) {
-            setCartItems([]);
-            return;
-        }
-        let newCartItems = cartItems.filter((i) => {
-            return i.id !== item.id;
-        });
-        setCartItems(newCartItems);
-    }
-
+    const shopData = useOutletContext();
+    console.log(shopData);
     return (
         <div className={styles.shopBody}>
-            <Navbar cartCounter={cartQty} />
-            {loading && <Loader />}
-            {/* {!loading && <Outlet items={items} addToCart={addToCart} />} */}
-            {!loading && <Outlet context={shopData} />}
+            <Navbar cartCounter={shopData.cartQty} />
+            <Outlet context={shopData} />
         </div>
     );
 }

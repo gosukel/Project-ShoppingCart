@@ -7,20 +7,27 @@ import ItemGrid from "../components/itemGrid/ItemGrid";
 const routes = [
     {
         path: "/",
-        element: <HomePage />,
-    },
-    {
-        path: "/shop",
-        element: <ShopPage />,
+        element: <App />,
         children: [
-            { index: true, element: <ItemGrid /> },
-            { path: "cart", element: <CartPage /> },
+            { index: true, element: <HomePage /> },
+            {
+                path: "shop",
+                element: <ShopPage />,
+                children: [
+                    { index: true, element: <ItemGrid /> },
+                    { path: "cart", element: <CartPage /> },
+                ],
+            },
         ],
     },
-    {
-        path: "/shop/cart",
-        element: <CartPage />,
-    },
+    // {
+    //     path: "/shop",
+    //     element: <ShopPage />,
+    //     children: [
+    //         { index: true, element: <ItemGrid /> },
+    //         { path: "cart", element: <CartPage /> },
+    //     ],
+    // },
 ];
 
 export default routes;

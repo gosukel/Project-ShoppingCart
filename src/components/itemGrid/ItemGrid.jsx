@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import styles from "./ItemGrid.module.css";
 import ItemCard from "../itemCard/ItemCard";
