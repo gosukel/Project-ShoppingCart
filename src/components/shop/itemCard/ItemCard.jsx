@@ -1,7 +1,6 @@
 import styles from "./ItemCard.module.css";
 import InputSection from "../inputSection/InputSection";
-import { splitPrice } from "../../utils/utilities";
-// id / .title / .price / description / category / .image / rating
+import { splitPrice } from "../../../utils/utilities";
 
 export default function ItemCard({ item, addToCart }) {
     let priceSplit = splitPrice(item.price);

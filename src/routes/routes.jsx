@@ -1,8 +1,8 @@
 import App from "../App";
 import HomePage from "../components/homepage/HomePage";
-import ShopPage from "../components/shopPage/ShopPage";
-import CartPage from "../components/cartPage/CartPage";
-import ItemGrid from "../components/itemGrid/ItemGrid";
+import ShopPage from "../components/shop/shopPage/ShopPage";
+import CartPage from "../components/cart/cartPage/CartPage";
+import ItemGrid from "../components/shop/itemGrid/ItemGrid";
 
 const routes = [
     {

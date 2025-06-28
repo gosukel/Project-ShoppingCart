@@ -1,7 +1,7 @@
 import styles from "./CartItem.module.css";
 import { useOutletContext } from "react-router-dom";
 import { Trash } from "lucide-react";
-import { splitPrice } from "../../utils/utilities";
+import { splitPrice } from "../../../utils/utilities";
 
 export default function CartItem({ item }) {
     const { addToCart, lowerItemQty, removeItem } = useOutletContext();

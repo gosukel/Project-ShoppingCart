@@ -4,7 +4,7 @@ import CartHeader from "../cartHeader/CartHeader";
 import CartFooter from "../cartFooter/CartFooter";
 import CartSummary from "../cartSummary/CartSummary";
 import { useOutletContext } from "react-router-dom";
-import { getSubTotal } from "../../utils/utilities";
+import { getSubTotal } from "../../../utils/utilities";
 
 export default function CartPage() {
     const { cartItems, cartQty } = useOutletContext();
@@ -20,7 +20,7 @@ export default function CartPage() {
                     })}
                 <CartFooter cartQty={cartQty} subtotal={subtotal} />
             </div>
-            <CartSummary cartQty={cartQty} subtotal={subtotal} />
+            <CartSummary subtotal={subtotal} />
         </div>
     );
 }

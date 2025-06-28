@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext } from "react";
 import Loader from "./components/loader/Loader";
 import { Outlet } from "react-router-dom";
+import "./App.css";
 
 export default function App() {
     const url = "https://fakestoreapi.com/products";
