@@ -8,7 +8,7 @@ export default function ShopPage() {
 
     return (
         <div className={styles.shopBody}>
-            <Navbar cartCounter={shopData.cartQty} />
+            <Navbar />
             <Outlet context={shopData} />
         </div>
     );
