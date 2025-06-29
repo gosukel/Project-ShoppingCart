@@ -20,14 +20,6 @@ const routes = [
             },
         ],
     },
-    // {
-    //     path: "/shop",
-    //     element: <ShopPage />,
-    //     children: [
-    //         { index: true, element: <ItemGrid /> },
-    //         { path: "cart", element: <CartPage /> },
-    //     ],
-    // },
 ];
 
 export default routes;
