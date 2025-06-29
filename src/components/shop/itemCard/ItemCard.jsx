@@ -4,7 +4,7 @@ import { splitPrice } from "../../../utils/utilities";
 
 export default function ItemCard({ item, addToCart }) {
     let priceSplit = splitPrice(item.price);
-    // console.log(item);
+
     return (
         <div className={styles.itemCard}>
             <div className={styles.itemImageDiv}>

@@ -1,6 +1,4 @@
 import styles from "./CartItem.module.css";
-import { useOutletContext } from "react-router-dom";
-import { Trash } from "lucide-react";
 import { splitPrice } from "../../../utils/utilities";
 import CartItemDetails from "../cartItemDetails/CartItemDetails";
 
